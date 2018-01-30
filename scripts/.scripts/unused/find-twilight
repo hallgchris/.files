@@ -1,2 +1,0 @@
-#!/bin/bash
-echo $(solunar -c melbourne --syslocal | grep 'Sunrise\|Sunset' | grep -Eo '[0-9]' | tr -d '\n' | grep -Eo '[0-9]{4,4}')

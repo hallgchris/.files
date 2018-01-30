@@ -1,0 +1,39 @@
+# vim: filetype=vim
+
+set selection-clipboard clipboard
+
+set font "Iosevka bold 10"
+
+# Need to automate this. Corresponds to wal color scheme.
+
+set default-bg "#0f1220"
+
+set completion-fg "#cda9c0"
+set completion-bg "#0f1220"
+set completion-highlight-fg "#0f1220"
+#set completion-highlight-bg "#e5b22c"
+set completion-highlight-bg "#af5f00"
+
+set highlight-color "#36588B"
+set highlight-active-color "#af5f00"
+
+set index-fg "#cda9c0"
+set index-bg "#0f1220"
+set index-active-fg "#0f1220"
+set index-active-bg "#af5f00"
+
+#set inputbar-fg "#e5b22c"
+set inputbar-fg "#af5f00"
+set inputbar-bg "#0f1220"
+
+set notification-fg "#cda9c0"
+set notification-bg "#a94762"
+set notification-warning-fg "#cda9c0"
+set notification-warning-bg "#a94762"
+
+set recolor-lightcolor "#0f1220"
+set recolor-darkcolor  "#cda9c0"
+
+set statusbar-fg "#cda9c0"
+set statusbar-bg "#5a2d4c"
+

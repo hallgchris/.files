@@ -1,0 +1,3 @@
+#!/bin/bash
+#sudo cp /home/christopher/.cache/wal/colors.css /opt/vivaldi/resources/vivaldi/style
+sudo ln -s /home/christopher/.cache/wal/colors.css /opt/vivaldi/resources/vivaldi/style/colors.css

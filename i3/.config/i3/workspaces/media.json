@@ -1,0 +1,43 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "pixel",
+    "current_border_width": 3,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 364,
+       "width": 484,
+       "x": 0,
+       "y": 0
+    },
+    "name": "ncmpcpp main",
+    "percent": 0.5,
+    "swallows": [
+       {
+          "class": "^URxvt$",
+          "instance": "^ncmpcpp-container$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    "border": "pixel",
+    "current_border_width": 3,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 364,
+       "width": 484,
+       "x": 0,
+       "y": 0
+    },
+    "name": "ncmpcpp visualiser",
+    "percent": 0.5,
+    "swallows": [
+       {
+          "class": "^URxvt$",
+          "instance": "^ncmpcpp-visualiser-container$"
+       }
+    ],
+    "type": "con"
+}
+

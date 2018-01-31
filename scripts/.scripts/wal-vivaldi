@@ -1,3 +1,8 @@
 #!/bin/bash
-#sudo cp /home/christopher/.cache/wal/colors.css /opt/vivaldi/resources/vivaldi/style
-sudo ln -s /home/christopher/.cache/wal/colors.css /opt/vivaldi/resources/vivaldi/style/colors.css
+if [ -d "/opt/vivaldi" ]; then
+	sudo ln -s /home/christopher/.cache/wal/colors.css /opt/vivaldi/resources/vivaldi/style/colors.css
+fi
+
+if [ -d "/opt/vivaldi-snapshot" ]; then
+	sudo ln -s /home/christopher/.cache/wal/colors.css /opt/vivaldi-snapshot/resources/vivaldi/style/colors.css
+fi

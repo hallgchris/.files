@@ -216,7 +216,7 @@ label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wlp5s0
+interface = ${env:WLAN_INTERFACE:wlp5s0}
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
@@ -244,7 +244,7 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = enp3s0
+interface = ${env:ETH_INTERFACE:enp3s0}
 interval = 3.0
 
 format-connected-underline = ${colors.primary}
@@ -332,7 +332,7 @@ animation-charging-framerate = 750
 
 [module/temperature]
 type = internal/temperature
-thermal-zone = 2
+thermal-zone = ${env:CPU_TEMP_THERMAL_ZONE:0}
 warn-temperature = 70
 
 format = <ramp> <label>

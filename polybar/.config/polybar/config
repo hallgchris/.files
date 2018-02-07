@@ -47,7 +47,7 @@ font-2 = material\-wifi:pixelsize=10;3
 
 modules-left = bspwm i3
 modules-center = mpd
-modules-right = filesystem memory cpu temperature xbacklight volume wlan eth battery date powermenu
+modules-right = temperature memory cpu xbacklight volume wlan eth battery date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -98,6 +98,7 @@ mount-1 = /home
 label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
+label-unmounted-underline = ${colors.foreground-alt}
 
 [module/bspwm]
 type = internal/bspwm
@@ -145,6 +146,7 @@ label-focused-padding = ${module/bspwm.label-focused-padding}
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %icon%
+label-unfocused-underline = #00000000
 label-unfocused-padding = ${module/bspwm.label-occupied-padding}
 
 ; visible = Active workspace on unfocused monitor
@@ -161,11 +163,12 @@ label-urgent-padding = ${module/bspwm.label-urgent-padding}
 [module/mpd]
 type = internal/mpd
 format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+format-online-underline =
 
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
+icon-prev = " "
+icon-stop = " "
+icon-play = " "
+icon-pause = " "
 icon-next = 
 
 label-song-maxlen = 40
@@ -191,17 +194,15 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = ""
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.primary}
-label = %percentage:2%%
+label = %percentage%%
 
 [module/memory]
 type = internal/memory
 interval = 2f011
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.primary}
 label = %percentage_used%%
 
 [module/wlan]
@@ -210,7 +211,6 @@ interface = ${env:WLAN_INTERFACE:wlp5s0}
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-underline = ${colors.primary}
 label-connected = %essid%
 
 format-disconnected = <label-disconnected>
@@ -228,7 +228,6 @@ type = internal/network
 interface = ${env:ETH_INTERFACE:enp3s0}
 interval = 3.0
 
-format-connected-underline = ${colors.primary}
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
@@ -249,10 +248,8 @@ date-alt = " %Y-%m-%d"
 time = %H:%M
 time-alt = %H:%M:%S
 
-;format-prefix = 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.primary}
 
 label = %date% %time%
 
@@ -302,7 +299,6 @@ thermal-zone = ${env:CPU_TEMP_THERMAL_ZONE:0}
 warn-temperature = 70
 
 format = <ramp> <label>
-format-underline = ${colors.primary}
 format-warn = <label-warn>
 format-warn-underline = ${colors.secondary}
 
@@ -350,7 +346,8 @@ menu-2-1-exec = menu-open-0
 
 [settings]
 screenchange-reload = true
-format-underline = ${colors.primary}
+;format-underline = ${colors.primary}
+format-underline =
 ;compositing-background = xor
 ;compositing-background = screen
 ;compositing-foreground = source

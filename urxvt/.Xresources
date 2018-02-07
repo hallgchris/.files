@@ -19,16 +19,3 @@ URxvt.url-select.underline: true
 URxvt.resize-font.smaller:	C-Down
 URxvt.resize-font.bigger:	C-Up
 
-
-! ROFI
-!rofi.color-enabled:  true
-!rofi.color-normal:  #00000000,text_color,#00000000,#00000000,selected_text_color
-!rofi.color-window:  bg_color_trans, bg_color_trans
-!rofi.separator-style: none
-!rofi.lines:   3
-!rofi.padding:   800
-!rofi.width:   100 
-!rofi.bw:   0
-!rofi.eh:   1.8
-!rofi.font:   System San Francisco Display 18
-

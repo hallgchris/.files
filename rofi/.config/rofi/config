@@ -1,0 +1,11 @@
+! vim: filetype=xdefaults
+
+rofi.color-enabled: true
+rofi.theme: ~/.cache/wal/colors-rofi.rasi
+rofi.width: 800
+rofi.padding: 50
+rofi.font: Iosevka Nerd Font 15
+rofi.bw: 3
+rofi.separator-style: solid
+rofi.hide-scrollbar: true
+rofi.lines: 5

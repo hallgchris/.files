@@ -95,7 +95,7 @@ bindsym $mod+p				exec $term -e htop
 bindsym $mod+q				kill
 bindsym $mod+Shift+q		kill
 
-bindsym $mod+d				exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -i -dmenu -hide-scrollbar -p "run"'
+bindsym $mod+d				exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -i -dmenu -p "run"'
 
 bindsym Print	 			exec gnome-screenshot -i
 

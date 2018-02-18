@@ -41,6 +41,8 @@ autocmd FileType c,cpp inoremap ;ts typedef<Space>struct<Space><Enter>{<Enter><+
 autocmd FileType c,cpp inoremap ;cl class<Space><Enter>{<Enter><Backspace>public:<Enter><++><Enter><Backspace><Backspace>private:<Enter><Backspace><++><Enter>};<Enter><++><Esc>7kA
 autocmd FileType c,cpp inoremap ;p  #pragma<Space>once<Enter>
 
+autocmd FileType rust inoremap ;m  fn<Space>main()<Enter>{<Enter><Enter>}<Esc>kA<Tab>
+
 " Copy/paste
 
 vmap <C-c> "+y
@@ -61,6 +63,7 @@ call plug#begin("~/.vim/plugged")
 Plug 'itchyny/calendar.vim'
 Plug 'potatoesmaster/i3-vim-syntax'
 Plug 'dag/vim-fish'
+Plug 'cespare/vim-toml'
 
 Plug 'zhou13/vim-easyescape'
 let g:easyescape_chars = { "j": 1, "k": 1 }
@@ -77,11 +80,14 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_rust_checkers = ['cargo']
 function! SyntasticCheckHook(errors)
     if !empty(a:errors)
 		let g:syntastic_loc_list_height = min([len(a:errors), 10])
 	endif
 endfunction
+
+Plug 'rust-lang/rust.vim'
 
 Plug 'octol/vim-cpp-enhanced-highlight'
 let g:cpp_class_scope_highlight = 1
@@ -103,6 +109,21 @@ if has('nvim')
 	let g:deoplete#sources#clang#clang_header = "/usr/lib/clang/"
 	Plug 'zchee/deoplete-jedi'
 	Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+
+	Plug 'sebastianmarkow/deoplete-rust'
+	if executable('racer')
+		let g:deoplete#sources#rust#racer_binary = systemlist('which racer')[0]
+	endif
+	if executable('rustc')
+		" if src installed via rustup, we can get it by running 
+		" rustc --print sysroot then appending the rest of the path
+		let rustc_root = systemlist('rustc --print sysroot')[0]
+		let rustc_src_dir = rustc_root . '/lib/rustlib/src/rust/src'
+		if isdirectory(rustc_src_dir)
+			let g:deoplete#sources#rust#rust_source_path = rustc_src_dir
+		endif
+	endif
+
 endif
 
 call plug#end()

@@ -62,6 +62,12 @@ Plug 'itchyny/calendar.vim'
 Plug 'potatoesmaster/i3-vim-syntax'
 Plug 'dag/vim-fish'
 
+Plug 'zhou13/vim-easyescape'
+let g:easyescape_chars = { "j": 1, "k": 1 }
+let g:easyescape_timeout = 100
+cnoremap jk <ESC>
+cnoremap kj <ESC>
+
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 let g:vim_markdown_math = 1

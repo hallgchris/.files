@@ -96,6 +96,7 @@ bindsym $mod+q				kill
 bindsym $mod+Shift+q		kill
 
 bindsym $mod+d				exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -i -dmenu -p "run"'
+bindsym $mod+o				exec --no-startup-id xdg-open $(locate Documents/2017 Documents/2018 | rofi -dmenu -i -p "locate")
 
 bindsym Print	 			exec gnome-screenshot -i
 
@@ -207,8 +208,7 @@ bindsym $mod+u				[instance="dropdown"] scratchpad show; move position center
 ###---Start things---###
 
 # Set wallpaper and colors
-exec_always --no-startup-id wal -i $wallpaper -a 95
-exec --no-startup-id wal_steam -w
+exec_always --no-startup-id wal -i $wallpaper -a 90
 exec_always --no-startup-id xrdb -merge ~/.Xresources
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 

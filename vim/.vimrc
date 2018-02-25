@@ -24,6 +24,7 @@ map <F6> :setlocal spell! spelllang=en_au<CR>
 
 inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
 
+" C/C++
 autocmd FileType c,cpp inoremap ;m  int<Space>main()<Enter>{<Enter><Tab><Enter>}<Esc>ka
 autocmd FileType c,cpp inoremap ;fu (<++>)<Enter>{<Enter><++><Enter>}<Enter><++><Esc>4kI
 autocmd FileType c,cpp inoremap ;fc (<++>)<Space>const<Enter>{<Enter><++><Enter>}<Enter><++><Esc>4kI
@@ -41,7 +42,31 @@ autocmd FileType c,cpp inoremap ;ts typedef<Space>struct<Space><Enter>{<Enter><+
 autocmd FileType c,cpp inoremap ;cl class<Space><Enter>{<Enter><Backspace>public:<Enter><++><Enter><Backspace><Backspace>private:<Enter><Backspace><++><Enter>};<Enter><++><Esc>7kA
 autocmd FileType c,cpp inoremap ;p  #pragma<Space>once<Enter>
 
+" Rust
 autocmd FileType rust inoremap ;m  fn<Space>main()<Enter>{<Enter><Enter>}<Esc>kA<Tab>
+
+" Markdown
+autocmd Filetype markdown,rmd inoremap ;b ****<++><Esc>F*hi
+autocmd Filetype markdown,rmd inoremap ;s ~~~~<++><Esc>F~hi
+autocmd Filetype markdown,rmd inoremap ;e **<++><Esc>F*i
+autocmd Filetype markdown,rmd inoremap ;h ====<Space><++><Esc>F=hi
+autocmd Filetype markdown,rmd inoremap ;i ![](<++>)<++><Esc>F[a
+autocmd Filetype markdown,rmd inoremap ;a [](<++>)<++><Esc>F[a
+autocmd Filetype markdown,rmd inoremap ;1 #<Space><Enter><++><Esc>kA
+autocmd Filetype markdown,rmd inoremap ;2 ##<Space><Enter><++><Esc>kA
+autocmd Filetype markdown,rmd inoremap ;3 ###<Space><Enter><++><Esc>kA
+autocmd Filetype rmd map <F5> :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>R<space>--vanilla<enter>
+autocmd Filetype rmd inoremap ;r ```{r}<CR>```<CR><CR><esc>2kO
+autocmd Filetype rmd inoremap ;p ```{python}<CR>```<CR><CR><esc>2kO
+
+" Latex
+autocmd FileType tex,rmd inoremap ;m $$<Space><++><Esc>2T$i
+autocmd FileType tex,rmd inoremap ;M $$$$<Enter><Enter><++><Esc>2k$hi
+autocmd FileType tex,rmd inoremap ;ol \begin{enumerate}<Enter><Enter>\end{enumerate}<Enter><Enter><++><Esc>3kA\item<Space>
+autocmd FileType tex,rmd inoremap ;ul \begin{itemize}<Enter><Enter>\end{itemize}<Enter><Enter><++><Esc>3kA\item<Space>
+autocmd FileType tex,rmd inoremap ;dl \begin{description}<Enter><Enter>\end{description}<Enter><Enter><++><Esc>3kA\item<Space>
+autocmd FileType tex,rmd inoremap ;li <Enter>\item<Space>
+autocmd FileType tex,rmd inoremap ;re \ref{}<Space><++><Esc>T{i
 
 " Copy/paste
 

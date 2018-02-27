@@ -60,8 +60,8 @@ autocmd Filetype rmd inoremap ;r ```{r}<CR>```<CR><CR><esc>2kO
 autocmd Filetype rmd inoremap ;p ```{python}<CR>```<CR><CR><esc>2kO
 
 " Latex
-autocmd FileType tex,rmd inoremap ;m $$<Space><++><Esc>2T$i
-autocmd FileType tex,rmd inoremap ;M $$$$<Enter><Enter><++><Esc>2k$hi
+autocmd FileType tex,rmd,markdown inoremap ;m $$<Space><++><Esc>2T$i
+autocmd FileType tex,rmd,markdown inoremap ;M $$$$<Enter><Enter><++><Esc>2k$hi
 autocmd FileType tex,rmd inoremap ;ol \begin{enumerate}<Enter><Enter>\end{enumerate}<Enter><Enter><++><Esc>3kA\item<Space>
 autocmd FileType tex,rmd inoremap ;ul \begin{itemize}<Enter><Enter>\end{itemize}<Enter><Enter><++><Esc>3kA\item<Space>
 autocmd FileType tex,rmd inoremap ;dl \begin{description}<Enter><Enter>\end{description}<Enter><Enter><++><Esc>3kA\item<Space>

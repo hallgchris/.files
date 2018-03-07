@@ -13,6 +13,9 @@ set $truemute pactl set-sink-volume 0 0
 gaps inner 10
 gaps outer 0
 
+smart_gaps on
+smart_borders on
+
 # (No) Title Bars
 for_window [class="^.*"] border pixel 3
 
@@ -219,6 +222,7 @@ exec --no-startup-id "devmon --no-gui"
 exec --no-startup-id redshift
 exec --no-startup-id dunst
 exec --no-startup-id compton
+exec --no-startup-id /usr/lib/kdeconnectd
 
 # persistent terminals
 exec --no-startup-id i3-msg 'workspace $ws10; append_layout ~/.config/i3/workspaces/media.json; workspace $ws1'

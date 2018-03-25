@@ -1,5 +1,8 @@
 """ General Settings
 
+noremap <leader>ev :execute 'e ' . resolve(expand($MYVIMRC))<CR>
+set shell=sh
+
 syntax on
 
 set number
@@ -21,6 +24,17 @@ filetype plugin on
 map <F6> :setlocal spell! spelllang=en_au<CR>
 
 """ Keybinds
+
+" Buffers
+:nnoremap <Tab> :bnext<CR>
+:nnoremap <S-Tab> :bprevious<CR>
+:nnoremap <C-d> :bdelete<CR>
+
+" Windows
+no <C-h> <C-w>h
+no <C-j> <C-w>j
+no <C-k> <C-w>k
+no <C-l> <C-w>l
 
 inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
 
@@ -85,6 +99,10 @@ endif
 
 call plug#begin("~/.vim/plugged")
 
+Plug 'dylanaraps/wal.vim'
+set rtp+=~/.vim/plugged/wal.vim
+colorscheme wal
+
 Plug 'itchyny/calendar.vim'
 Plug 'potatoesmaster/i3-vim-syntax'
 Plug 'dag/vim-fish'
@@ -107,18 +125,64 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_rust_checkers = ['cargo']
 function! SyntasticCheckHook(errors)
-    if !empty(a:errors)
+	if !empty(a:errors)
 		let g:syntastic_loc_list_height = min([len(a:errors), 10])
 	endif
 endfunction
 
-Plug 'rust-lang/rust.vim'
+"Plug 'rust-lang/rust.vim'
 
 Plug 'octol/vim-cpp-enhanced-highlight'
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
 let g:cpp_experimental_simple_template_highlight = 1
+
+Plug 'scrooloose/nerdcommenter'
+
+Plug 'scrooloose/nerdtree'
+map <C-n> :NERDTreeToggle<CR>
+" Open NerdTree if no file is specified when opening vim
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" Open NerdTree when a vim starts up on opening a directory
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+" Close vim if the only window left open is NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" Get rid of the ? thing
+let NERDTreeMinimalUI = 1
+" Quit when file is opened
+let NERDTreeQuitOnOpen = 1
+"Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+"Plug 'Xuyuanp/nerdtree-git-plugin'
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "",
+    \ "Staged"    : "",
+    \ "Untracked" : "",
+    \ "Renamed"   : "",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '',
+    \ "Unknown"   : "?"
+    \ }
+
+
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+Plug 'bling/vim-airline'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#fugitiveline#enabled = 1
+let g:airline#extensions#branch#format = 'CustomBranchName'
+function! CustomBranchName(name)
+	return '[' . a:name . ']'
+endfunction
+let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
 if has('nvim')
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -135,53 +199,43 @@ if has('nvim')
 	Plug 'zchee/deoplete-jedi'
 	Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 
-	Plug 'sebastianmarkow/deoplete-rust'
-	if executable('racer')
-		let g:deoplete#sources#rust#racer_binary = systemlist('which racer')[0]
-	endif
-	if executable('rustc')
-		" if src installed via rustup, we can get it by running 
-		" rustc --print sysroot then appending the rest of the path
-		let rustc_root = systemlist('rustc --print sysroot')[0]
-		let rustc_src_dir = rustc_root . '/lib/rustlib/src/rust/src'
-		if isdirectory(rustc_src_dir)
-			let g:deoplete#sources#rust#rust_source_path = rustc_src_dir
-		endif
-	endif
+	"Plug 'sebastianmarkow/deoplete-rust'
+	"if executable('racer')
+	"	let g:deoplete#sources#rust#racer_binary = systemlist('which racer')[0]
+	"endif
+	"if executable('rustc')
+	"	" if src installed via rustup, we can get it by running
+	"	" rustc --print sysroot then appending the rest of the path
+	"	let rustc_root = systemlist('rustc --print sysroot')[0]
+	"	let rustc_src_dir = rustc_root . '/lib/rustlib/src/rust/src'
+	"	if isdirectory(rustc_src_dir)
+	"		let g:deoplete#sources#rust#rust_source_path = rustc_src_dir
+	"	endif
+	"endif
+
+	Plug 'autozimu/LanguageClient-neovim', {
+		\ 'branch': 'next',
+		\ 'do': './install.sh',
+		\ }
+	" Required for operations modifying multiple buffers like rename.
+	set hidden
+	let g:LanguageClient_serverCommands = {
+		\ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+		\ 'javascript': ['javascript-typescript-stdio'],
+		\ }
+
+	nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+	nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+	nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+	nnoremap <silent> <F3> :call LanguageClient_textDocument_codeAction()<CR>
 
 endif
 
+Plug 'ryanoasis/vim-devicons'
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:DevIconsEnableFolderPatternMatching = 1
+
 call plug#end()
-
-""" Statusline
-
-function! GitBranch()
-  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-endfunction
-
-function! StatuslineGit()
-  let l:branchname = GitBranch()
-  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
-endfunction
-
-set statusline=
-set statusline+=%#PmenuSel#
-set statusline+=%{StatuslineGit()}
-set statusline+=%#LineNr#
-set statusline+=\ %f
-set statusline+=%m\
-set statusline+=%=
-set statusline+=%#CursorColumn#
-set statusline+=%#LineNr#
-set statusline+=\ %y
-set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-set statusline+=\[%{&fileformat}\]
-set statusline+=\ %p%%
-set statusline+=\ %l:%c
-set statusline+=\ 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 
 """ Calendar
 

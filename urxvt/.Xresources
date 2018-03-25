@@ -5,7 +5,8 @@ URxvt.perl-ext-common: default,keyboard-select,clipboard,resize-font,matcher,url
 
 URxvt.intensityStyles:	false
 URxvt.depth:		32
-URxvt.font: 		xft:IosevkaNerdFont:style=bold:pixelsize=12
+URxvt.font: 		xft:IosevkaNerdFont:style=medium:pixelsize=12
+URxvt.boldFont:		xft:IosevkaNerdFont:style=heavy:pixelsize=12
 URxvt.scrollBar:	false
 URxvt.internalBorder: 8
 

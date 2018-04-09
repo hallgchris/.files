@@ -69,6 +69,7 @@ autocmd Filetype markdown,rmd inoremap ;a [](<++>)<++><Esc>F[a
 autocmd Filetype markdown,rmd inoremap ;1 #<Space><Enter><++><Esc>kA
 autocmd Filetype markdown,rmd inoremap ;2 ##<Space><Enter><++><Esc>kA
 autocmd Filetype markdown,rmd inoremap ;3 ###<Space><Enter><++><Esc>kA
+autocmd Filetype markdown map <F5> :!pandoc<space>"<C-r>%"<space>-o<space>"<C-r>%.pdf"<Enter><Enter>
 autocmd Filetype rmd map <F5> :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>R<space>--vanilla<enter>
 autocmd Filetype rmd inoremap ;r ```{r}<CR>```<CR><CR><esc>2kO
 autocmd Filetype rmd inoremap ;p ```{python}<CR>```<CR><CR><esc>2kO
@@ -101,12 +102,13 @@ call plug#begin("~/.vim/plugged")
 
 Plug 'dylanaraps/wal.vim'
 set rtp+=~/.vim/plugged/wal.vim
-colorscheme wal
+"colorscheme wal
 
 Plug 'itchyny/calendar.vim'
 Plug 'potatoesmaster/i3-vim-syntax'
 Plug 'dag/vim-fish'
 Plug 'cespare/vim-toml'
+Plug 'tikhomirov/vim-glsl'
 
 Plug 'zhou13/vim-easyescape'
 let g:easyescape_chars = { "j": 1, "k": 1 }
@@ -223,6 +225,33 @@ if has('nvim')
 		\ 'rust': ['rustup', 'run', 'nightly', 'rls'],
 		\ 'javascript': ['javascript-typescript-stdio'],
 		\ }
+
+	let g:LanguageClient_diagnosticsDisplay = {
+		\ 1: {
+        \     "name": "Error",
+        \     "texthl": "ALEError",
+        \     "signText": "",
+        \     "signTexthl": "ALEErrorSign",
+        \ },
+        \ 2: {
+        \     "name": "Warning",
+        \     "texthl": "ALEWarning",
+        \     "signText": "",
+        \     "signTexthl": "ALEWarningSign",
+        \ },
+        \ 3: {
+        \     "name": "Information",
+        \     "texthl": "ALEInfo",
+        \     "signText": "",
+        \     "signTexthl": "ALEInfoSign",
+        \ },
+        \ 4: {
+        \     "name": "Hint",
+        \     "texthl": "ALEInfo",
+        \     "signText": "",
+        \     "signTexthl": "ALEInfoSign",
+        \ },
+	\ }
 
 	nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 	nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>

@@ -3,6 +3,7 @@ alias vim="nvim"
 set PATH ~/.scripts $PATH
 set PATH ~/.cargo/bin $PATH
 set XDG_CONFIG_HOME ~/.config
+set XDG_MUSIC_DIR ~/Music
 
 posix-source ~/.config/fish/env
 

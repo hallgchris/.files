@@ -1,0 +1,17 @@
+#!/bin/sh
+
+FILE=$(zzzfoo --synthetic-abstract)
+
+if [ -z $FILE ]; then
+	exit
+fi
+
+MIMETYPE=$(xdg-mime query filetype "$FILE")
+MIMEAPP=$(xdg-mime query default "$MIMETYPE")
+
+if [ -z $MIMEAPP ] || [ $MIMEAPP = "nvim.desktop" ]; then
+	urxvt -e sh -c "nvim '${FILE}'"
+else
+	xdg-open "$FILE"
+fi
+

@@ -91,7 +91,7 @@ bindsym $mod+slash			split vertical; exec $term
 bindsym $mod+r				exec $term -e ranger
 bindsym $mod+Shift+r		exec $term -e sudo ranger /
 
-bindsym $mod+c				exec $term -e vim +Calendar.vim
+bindsym $mod+Shift+p		exec $term -e vim +Calendar.vim
 
 bindsym $mod+p				exec $term -e htop
 
@@ -99,9 +99,12 @@ bindsym $mod+q				kill
 bindsym $mod+Shift+q		kill
 
 bindsym $mod+d				exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -i -dmenu -p "run"'
-bindsym $mod+o				exec --no-startup-id xdg-open $(locate Documents/2017 Documents/2018 | rofi -dmenu -i -p "locate")
+bindsym $mod+o				exec --no-startup-id finder
 
-bindsym Print	 			exec gnome-screenshot -i
+bindsym Print	 			exec teiler --quickcopy area
+bindsym Shift+Print	 		exec teiler
+
+bindsym $mod+c				exec copyq menu
 
 # Window manipulation
 
@@ -183,9 +186,9 @@ bindsym $mod+Shift+Delete	exec $truemute; exec playerctl pause; workspace lmao; 
 
 # restart i3 inplace
 bindsym $mod+F2		restart
-# exit i3 (logs you out of your X session).
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+# Power stuff
+bindsym $mod+e		exec	rofi-power
 bindsym $mod+Escape exec 	lock
 
 # Pulse Audio controls

@@ -2,7 +2,7 @@
 
 ###---Basic Definitions---###
 
-set $term urxvt
+set $term alacritty
 
 set $incvol amixer -D pulse sset Master 5%+
 set $decvol amixer -D pulse sset Master 5%-
@@ -88,8 +88,8 @@ bindsym $mod+Return			exec $term
 bindsym $mod+apostrophe		split horizontal; exec $term
 bindsym $mod+slash			split vertical; exec $term
 
-bindsym $mod+r				exec $term -e ranger
-bindsym $mod+Shift+r		exec $term -e sudo ranger /
+bindsym $mod+r				exec $term -e fish -c ranger
+bindsym $mod+Shift+r		exec $term -e fish -c "sudo ranger /"
 
 bindsym $mod+Shift+p		exec $term -e vim +Calendar.vim
 
@@ -229,7 +229,7 @@ exec --no-startup-id /usr/lib/kdeconnectd
 
 # persistent terminals
 exec --no-startup-id i3-msg 'workspace $ws10; append_layout ~/.config/i3/workspaces/media.json; workspace $ws1'
-exec --no-startup-id $term -name "ncmpcpp-container" -e ncmpcpp
-exec --no-startup-id $term -name "ncmpcpp-visualiser-container" -e ncmpcpp --screen visualizer
-exec --no-startup-id $term -name "dropdown" -b 30 -e sh -c "neofetch; fish"
+exec --no-startup-id $term -t "ncmpcpp-container" -e ncmpcpp
+exec --no-startup-id $term -t "ncmpcpp-visualiser-container" -e ncmpcpp --screen visualizer
+exec --no-startup-id $term -t "dropdown" -e sh -c "neofetch; fish"
 

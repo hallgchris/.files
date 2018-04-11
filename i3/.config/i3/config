@@ -214,7 +214,7 @@ bindsym $mod+u				[instance="dropdown"] scratchpad show; move position center
 ###---Start things---###
 
 # Set wallpaper and colors
-exec_always --no-startup-id wal -i $wallpaper -a 90 -o "~/.scripts/wal.sh"
+exec_always --no-startup-id wal -R -a 90 -o "~/.scripts/wal.sh"
 exec_always --no-startup-id xrdb -merge ~/.Xresources
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 

@@ -1,0 +1,37 @@
+# vim: filetype=vim
+
+set selection-clipboard clipboard
+
+set font "Iosevka bold 10"
+
+set default-bg "{background}"
+
+set completion-fg "{foreground}"
+set completion-bg "{background}"
+set completion-highlight-fg "{background}"
+set completion-highlight-bg "{color5}"
+set completion-highlight-bg "#af5f00"
+
+set highlight-color "{color6}"
+set highlight-active-color "#af5f00"
+
+set index-fg "{foreground}"
+set index-bg "{background}"
+set index-active-fg "{background}"
+set index-active-bg "#af5f00"
+
+set inputbar-fg "{color5}"
+set inputbar-fg "#af5f00"
+set inputbar-bg "{background}"
+
+set notification-fg "{foreground}"
+set notification-bg "{color4}"
+set notification-warning-fg "{foreground}"
+set notification-warning-bg "{color4}"
+
+set recolor-lightcolor "{background}"
+set recolor-darkcolor  "{foreground}"
+
+set statusbar-fg "{foreground}"
+set statusbar-bg "{color2}"
+

@@ -63,6 +63,7 @@ autocmd FileType rust inoremap ;m  fn<Space>main()<Enter>{<Enter><Enter>}<Esc>kA
 autocmd Filetype markdown,rmd inoremap ;b ****<++><Esc>F*hi
 autocmd Filetype markdown,rmd inoremap ;s ~~~~<++><Esc>F~hi
 autocmd Filetype markdown,rmd inoremap ;e **<++><Esc>F*i
+autocmd Filetype markdown,rmd inoremap ;c ``<++><Esc>F`i
 autocmd Filetype markdown,rmd inoremap ;h ====<Space><++><Esc>F=hi
 autocmd Filetype markdown,rmd inoremap ;i ![](<++>)<++><Esc>F[a
 autocmd Filetype markdown,rmd inoremap ;a [](<++>)<++><Esc>F[a
@@ -70,7 +71,7 @@ autocmd Filetype markdown,rmd inoremap ;1 #<Space><Enter><++><Esc>kA
 autocmd Filetype markdown,rmd inoremap ;2 ##<Space><Enter><++><Esc>kA
 autocmd Filetype markdown,rmd inoremap ;3 ###<Space><Enter><++><Esc>kA
 autocmd Filetype markdown map <F5> :!pandoc<space>"<C-r>%"<space>-o<space>"<C-r>%.pdf"<Enter><Enter>
-autocmd Filetype rmd map <F5> :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>R<space>--vanilla<enter>
+autocmd Filetype rmd map <F5> :!echo<space>"require(rmarkdown);<space>render('<C-r>%')"<space>\|<space>R<space>--vanilla<enter>
 autocmd Filetype rmd inoremap ;r ```{r}<CR>```<CR><CR><esc>2kO
 autocmd Filetype rmd inoremap ;p ```{python}<CR>```<CR><CR><esc>2kO
 
@@ -111,10 +112,10 @@ Plug 'cespare/vim-toml'
 Plug 'tikhomirov/vim-glsl'
 
 Plug 'zhou13/vim-easyescape'
-let g:easyescape_chars = { "j": 1, "k": 1 }
-let g:easyescape_timeout = 100
-cnoremap jk <ESC>
-cnoremap kj <ESC>
+let g:easyescape_chars = { "n": 1, "e": 1 }
+let g:easyescape_timeout = 50
+"cnoremap ne <ESC>
+"cnoremap en <ESC>
 
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
@@ -185,6 +186,7 @@ let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#wordcount#filetypes = '\vtext|markdown|rmd'
 Plug 'vim-airline/vim-airline-themes'
 let g:airline_theme='deus'
 

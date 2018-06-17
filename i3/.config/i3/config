@@ -7,7 +7,7 @@ set $term alacritty
 set $incvol amixer -D pulse sset Master 5%+
 set $decvol amixer -D pulse sset Master 5%-
 set $mute amixer -D pulse set Master 1+ toggle
-set $truemute amixer -D sset Master 0
+set $truemute amixer -D pulse sset Master 0
 
 # i3-gaps
 gaps inner 10
@@ -174,7 +174,7 @@ bindsym $mod+Shift+0		move container to workspace $ws10
 bindsym $mod+Tab			workspace back_and_forth
 
 # panic mode
-bindsym $mod+Shift+Delete	exec $truemute; exec playerctl pause; workspace lmao; exec $term -e htop; exec $term -e ranger
+bindsym $mod+Shift+Delete	exec $truemute; exec mp pause; workspace lmao; exec $term -e htop; exec $term -e ranger
 
 # Move focus between screens
 #bindsym $mod+Alt+h focus output left

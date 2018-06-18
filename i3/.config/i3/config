@@ -100,6 +100,7 @@ bindsym $mod+Shift+q		kill
 
 bindsym $mod+d				exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -i -dmenu -p "run"'
 bindsym $mod+o				exec --no-startup-id finder
+bindsym $mod+b				exec --no-startup-id textbooks
 
 bindsym Print	 			exec teiler --quickcopy area
 bindsym Shift+Print	 		exec teiler

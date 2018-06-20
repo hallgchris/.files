@@ -4,6 +4,6 @@ TEXTBOOKS="$TEXTBOOKS  ~/Downloads/Textbooks/Unit 3 & 4/Methods Cambridge VCE U3
 TEXTBOOKS="$TEXTBOOKS\n~/Downloads/Textbooks/Unit 3 & 4/Specialist Cambridge VCE U3&4.pdf"
 TEXTBOOKS="$TEXTBOOKS\n~/Downloads/Textbooks/Unit 3 & 4/Physics Heinemann VCE U3&4.pdf"
 
-FILE=$(echo -e $TEXTBOOKS | rofi -i -dmenu)
+FILE=$(echo -e $TEXTBOOKS | rofi -i -dmenu -p textbooks)
 FILE=${FILE#"~/"}
 xdg-open "$FILE"

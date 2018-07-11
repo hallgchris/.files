@@ -47,7 +47,7 @@ font-2 = material\-wifi:pixelsize=10;3
 
 modules-left = bspwm i3
 modules-center = mpd
-modules-right = temperature memory cpu xbacklight volume wlan eth battery date powermenu
+modules-right = xkeyboard temperature memory cpu xbacklight volume wlan eth battery date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -76,17 +76,17 @@ label = %title:0:30:...%
 type = internal/xkeyboard
 blacklist-0 = num lock
 
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
+;format-prefix-underline = ${colors.secondary}
 
-label-layout = %layout%
-label-layout-underline = ${colors.secondary}
+label-layout = %name%
+;label-layout-underline = ${colors.secondary}
 
 label-indicator-padding = 2
 label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
+;label-indicator-underline = ${colors.secondary}
 
 [module/filesystem]
 type = internal/fs
@@ -171,7 +171,7 @@ icon-play = " "
 icon-pause = " "
 icon-next = 
 
-label-song-maxlen = 40
+label-song-maxlen = 60
 label-song-ellipsis = true
 
 [module/xbacklight]
@@ -228,7 +228,7 @@ type = internal/network
 interface = ${env:ETH_INTERFACE:enp3s0}
 interval = 3.0
 
-format-connected-prefix = " "
+format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 

@@ -205,7 +205,6 @@ bindsym XF86AudioPrev exec mpc prev
 
 # Unmount most recently mounted drive
 bindsym $mod+m exec devmon -c -g
-
 ###---Scratchpad Windows---###
 
 for_window [instance="dropdown"] floating enable
@@ -225,7 +224,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # other daemons
 exec --no-startup-id pulseaudio --start
 #exec --no-startup-id mpDris2
-exec --no-startup-id devmon --no-gui --exec-on-drive "notify-send --icon=block-device --urgency=low \"Volume %l has been mounted to \\\"%d\\\"\"" --exec-on-unmount "notify-send --icon=block-device --urgency=low \"Volume %l has been unmounted\"
+exec --no-startup-id start_devmon
 exec --no-startup-id redshift
 exec --no-startup-id dunst
 exec --no-startup-id compton

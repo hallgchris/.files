@@ -1,4 +1,3 @@
---
 --   ██                            ██                          
 --  ░██                           ░██                          
 --  ░██  ██████  ██    ██  █████  ░██  ██████    █████   █████ 
@@ -88,7 +87,7 @@ theme.useless_gap   = dpi(3)
 theme.screen_margin = dpi(3)
 
 -- Borders
-theme.border_width  = dpi(0)
+theme.border_width  = dpi(3)
 theme.border_color = xcolor0
 theme.border_normal = xcolor0
 theme.border_focus  = xcolor0
@@ -169,9 +168,9 @@ theme.separator_fg = xcolor8
 -- (Bar items can be customized in bars.lua)
 theme.wibar_position = "bottom"
 theme.wibar_detached = false
-theme.wibar_height = dpi(47)
+theme.wibar_height = dpi(30)
 theme.wibar_fg = xcolor7
-theme.wibar_bg = xcolor0 .. "00"
+theme.wibar_bg = xcolor0
 --theme.wibar_opacity = 0.7
 theme.wibar_border_color = xcolor0
 theme.wibar_border_width = 0

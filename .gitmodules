@@ -1,3 +1,6 @@
 [submodule "scripts/.scripts/intellijPywal"]
 	path = scripts/.scripts/intellijPywal
 	url = https://github.com/Mr-SD/intellijPywal.git
+[submodule "awesome/.config/awesome/lain"]
+	path = awesome/.config/awesome/lain
+	url = https://github.com/lcpz/lain.git

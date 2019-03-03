@@ -36,7 +36,7 @@ no <C-j> <C-w>j
 no <C-k> <C-w>k
 no <C-l> <C-w>l
 
-inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
+"inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
 
 " C/C++
 autocmd FileType c,cpp inoremap ;m  int<Space>main()<Enter>{<Enter><Tab><Enter>}<Esc>ka

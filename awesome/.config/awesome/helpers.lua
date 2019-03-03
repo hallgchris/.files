@@ -1,4 +1,5 @@
 local awful = require("awful")
+local beautiful = require("beautiful")
 local gears = require("gears")
 local wibox = require("wibox")
 
@@ -48,6 +49,30 @@ function helpers.pad(size)
 	local pad = wibox.widget.textbox(str)
 	return pad
 end
+
+function helpers.vpad(size)
+	return wibox.container {
+		helpers.pad(size),
+		direction = "east",
+		widget = wibox.container.rotate,
+	}
+end
+
+helpers.space = wibox.widget {
+    widget = wibox.widget.separator,
+    orientation = "vertical",
+    forced_width = 3,
+    thickness = 3,
+    color = "#00000000",
+}
+
+helpers.separator = wibox.widget {
+	widget = wibox.widget.separator,
+	orientation = "vertical",
+	forced_width = beautiful.border_width / 2,
+	thickness = beautiful.border_width / 2,
+	color = beautiful.border_normal,
+}
 
 local double_tap_timer = nil
 function helpers.single_double_tap(single_tap_function, double_tap_function)

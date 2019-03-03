@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+
+layout=$(setxkbmap -query | grep layout | awk '{print $2}')
+variant=$(setxkbmap -query | grep variant | awk '{print $2}')
+
+if [[ -n $variant ]]; then
+	echo "$layout($variant)"
+else
+	echo "$layout"
+fi
+

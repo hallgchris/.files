@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>Subjects</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="favicon.png" rel="shortcut icon" type="image/x-icon" />
+</head>
+<body>
+    <div id="search">
+        <input id="search-field" type="text" name="search-field" onkeypress="return search(event)"/>
+    </div>
+    <div class="container">
+        <div id="clock"></div>
+        <div class="welcome-container">
+            <div class="row">
+                <div id="welcome-description"class="inline"></div>
+                <div class="inline">Subject Shortcuts</div>
+                <div id="temp" class="inline"></div>
+            </div>
+        </div>
+        <div class="bookmark-container">
+            <div class="bookmark-set">
+                <div class="bookmark-title">ENG1005</div>
+                <div class="bookmark-inner-container">
+                    <a class="bookmark" href="https://lms.monash.edu/course/view.php?id=50587" target="_blank">Moodle</a>
+                </div>
+            </div>
+            <div class="bookmark-set">
+                <div class="bookmark-title">ENG1060</div>
+                <div class="bookmark-inner-container">
+                    <a class="bookmark" href="https://lms.monash.edu/course/view.php?id=48260" target="_blank">Moodle</a>
+                    <a class="bookmark" href="https://drive.google.com/open?id=1FAadSPjZs-VwZ1GgH0-D1NXNxGLpAO1c" target="_blank">Preworkshop video slides</a>
+                    <a class="bookmark" href="https://drive.google.com/open?id=1pKHK5NmbL1-mHByAsIpSK8bH83wsRSSa" target="_blank">Workshop resources</a>
+                    <a class="bookmark" href="https://drive.google.com/open?id=1KDLZEtAb_VglY5n4wJMd1iBaNgJrcR1O" target="_blank">Lab resources</a>
+                </div>
+            </div>
+            <div class="bookmark-set">
+            	<div class="bookmark-title">PHS1011</div>
+                <div class="bookmark-inner-container">
+                    <a class="bookmark" href="https://lms.monash.edu/course/view.php?id=46709" target="_blank">Moodle</a>
+                </div>
+            </div>
+            <div class="bookmark-set">
+            	<div class="bookmark-title">FIT1008</div>
+                <div class="bookmark-inner-container">
+                    <a class="bookmark" href="https://lms.monash.edu/course/view.php?id=50961" target="_blank">Moodle</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Get current time and format
+        function getTime() {
+            let date = new Date(),
+                min = date.getMinutes(),
+                sec = date.getSeconds(),
+                hour = date.getHours();
+
+            return "" + 
+                (hour < 10 ? ("0" + hour) : hour) + ":" + 
+                (min < 10 ? ("0" + min) : min) + ":" + 
+                (sec < 10 ? ("0" + sec) : sec);
+        }
+
+        window.onload = () => {
+            // Set up the clock
+            document.getElementById("clock").innerHTML = getTime();
+            // Set clock interval to tick clock
+            setInterval( () => {
+                document.getElementById("clock").innerHTML = getTime();
+            },100);
+        }
+    </script>
+</body>
+</html>

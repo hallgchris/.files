@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="favicon.png" rel="shortcut icon" type="image/x-icon" />
+</head>
+<body>
+    <div id="search">
+        <input id="search-field" type="text" name="search-field" onkeypress="return search(event)"/>
+    </div>
+    <div class="container">
+        <div id="clock"></div>
+        <div class="welcome-container">
+            <div class="row">
+                <div id="welcome-description"class="inline"></div>
+                <div class="inline"> Welcome Christopher</div>
+                <div id="temp" class="inline"></div>
+            </div>
+        </div>
+        <div class="bookmark-container">
+            <div class="bookmark-set">
+                <div class="bookmark-title">Daily</div>
+                <div class="bookmark-inner-container">
+                    <a class="bookmark" href="https://mail.google.com/mail/u/0/" target="_blank">Gmail (hallgchris)</a>
+                    <a class="bookmark" href="https://mail.google.com/mail/u/2/" target="_blank">Gmail (christopher.hall.3609)</a>
+                    <a class="bookmark" href="https://calendar.google.com/" target="_blank">Calendar</a>
+                    <a class="bookmark" href="https://maps.google.com/" target="_blank">Maps</a>
+                    <a class="bookmark" href="https://github.com/" target="_blank">Github</a>
+                </div>
+            </div>
+            <div class="bookmark-set">
+                <div class="bookmark-title">Uni</div>
+                <div class="bookmark-inner-container">
+                    <a class="bookmark" href="subjects.html">Subject shortcuts</a>
+                    <a class="bookmark" href="https://www.monash.edu/get-started" target="_blank">Getting started</a>
+                    <a class="bookmark" href="https://my.monash/campusm/home" target="_blank">my.monash</a>
+					<a class="bookmark" href="https://mail.google.com/mail/u/1/" target="_blank">Email</a>
+					<a class="bookmark" href="https://lms.monash.edu/my/" target="_blank">Moodle</a>
+                </div>
+            </div>
+            <div class="bookmark-set">
+            	<div class="bookmark-title">Social</div>
+                <div class="bookmark-inner-container">
+                    <a class="bookmark" href="https://www.youtube.com/feed/subscriptions" target="_blank">Youtube</a>
+                    <a class="bookmark" href="https://reddit.com" target="_blank">Reddit</a>
+                    <a class="bookmark" href="https://www.facebook.com/" target="_blank">Facebook</a>
+                    <a class="bookmark" href="https://www.messenger.com" target="_blank">Messenger</a>
+                    <a class="bookmark" href="https://messages.android.com/" target="_blank">Android Messages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Get current time and format
+        function getTime() {
+            let date = new Date(),
+                min = date.getMinutes(),
+                sec = date.getSeconds(),
+                hour = date.getHours();
+
+            return "" + 
+                (hour < 10 ? ("0" + hour) : hour) + ":" + 
+                (min < 10 ? ("0" + min) : min) + ":" + 
+                (sec < 10 ? ("0" + sec) : sec);
+        }
+
+        window.onload = () => {
+            // Set up the clock
+            document.getElementById("clock").innerHTML = getTime();
+            // Set clock interval to tick clock
+            setInterval( () => {
+                document.getElementById("clock").innerHTML = getTime();
+            },100);
+        }
+    </script>
+</body>
+</html>

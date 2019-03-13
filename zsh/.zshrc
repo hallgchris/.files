@@ -200,5 +200,6 @@ export PATH=$PATH:"$HOME/.scripts"
 
 alias vim='nvim'
 alias v='nvim'
+alias ls='ls --color'
 
 

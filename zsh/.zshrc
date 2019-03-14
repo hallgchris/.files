@@ -200,6 +200,7 @@ export PATH=$PATH:"$HOME/.scripts"
 
 alias vim='nvim'
 alias v='nvim'
+alias ls='ls --color'
 
 alias gd="cd ~/Documents && grive && cd - >/dev/null"
 alias cdd="cd ~/Documents"

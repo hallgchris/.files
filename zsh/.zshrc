@@ -20,8 +20,8 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 HISTFILE=~/.zhistory
 HISTSIZE=1000
 SAVEHIST=500
-#export EDITOR=/usr/bin/nano
-#export VISUAL=/usr/bin/nano
+export EDITOR=/usr/bin/nvim
+export VISUAL=/usr/bin/nvim
 WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain characters part of the word
 
 
@@ -201,4 +201,10 @@ export PATH=$PATH:"$HOME/.scripts"
 alias vim='nvim'
 alias v='nvim'
 
+alias gd="cd ~/Documents && grive && cd - >/dev/null"
+alias cdd="cd ~/Documents"
+alias cd1="cd ~/Documents/ENG1005"
+alias cd2="cd ~/Documents/ENG1060"
+alias cd3="cd ~/Documents/PHS1011"
+alias cd4="cd ~/Documents/FIT1008"
 

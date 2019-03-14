@@ -127,6 +127,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_rust_checkers = ['cargo']
+let g:syntastic_mode_map = {"mode": "active", "passive_filetypes": ["asm"] }
 function! SyntasticCheckHook(errors)
 	if !empty(a:errors)
 		let g:syntastic_loc_list_height = min([len(a:errors), 10])

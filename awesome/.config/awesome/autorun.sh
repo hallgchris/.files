@@ -37,3 +37,4 @@ run pamac-tray
 run blueman-applet
 run msm_notifier
 run /usr/lib/kdeconnectd 
+run grive-indicator

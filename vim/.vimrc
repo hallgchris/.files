@@ -18,6 +18,9 @@ set cindent
 set ignorecase
 set smartcase
 
+" More regular writes to swap, safe of mind and faster live latex previews
+set updatetime=1000
+
 set nocompatible
 filetype plugin on
 
@@ -36,7 +39,7 @@ no <C-j> <C-w>j
 no <C-k> <C-w>k
 no <C-l> <C-w>l
 
-"inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
+inoremap ;; <Esc>/<++><Enter>"_c4l
 
 " C/C++
 autocmd FileType c,cpp inoremap ;m  int<Space>main()<Enter>{<Enter><Tab><Enter>}<Esc>ka
@@ -71,7 +74,8 @@ autocmd Filetype markdown,rmd inoremap ;1 #<Space><Enter><++><Esc>kA
 autocmd Filetype markdown,rmd inoremap ;2 ##<Space><Enter><++><Esc>kA
 autocmd Filetype markdown,rmd inoremap ;3 ###<Space><Enter><++><Esc>kA
 autocmd Filetype markdown map <F5> :!pandoc<space>"<C-r>%"<space>-o<space>"<C-r>%.pdf"<Enter><Enter>
-autocmd Filetype rmd map <F5> :!echo<space>"require(rmarkdown);<space>render('<C-r>%')"<space>\|<space>R<space>--vanilla<enter>
+autocmd Filetype rmd map <F5> :w<enter>:!echo<space>"require(rmarkdown);<space>render('<C-r>%')"<space>\|<space>R<space>--vanilla<enter>
+autocmd Filetype rmd inoremap <F5> <Esc>:w<enter>:!echo<space>"require(rmarkdown);<space>render('<C-r>%')"<space>\|<space>R<space>--vanilla<enter><enter>a
 autocmd Filetype rmd inoremap ;r ```{r}<CR>```<CR><CR><esc>2kO
 autocmd Filetype rmd inoremap ;p ```{python}<CR>```<CR><CR><esc>2kO
 
@@ -83,6 +87,9 @@ autocmd FileType tex,rmd inoremap ;ul \begin{itemize}<Enter><Enter>\end{itemize}
 autocmd FileType tex,rmd inoremap ;dl \begin{description}<Enter><Enter>\end{description}<Enter><Enter><++><Esc>3kA\item<Space>
 autocmd FileType tex,rmd inoremap ;li <Enter>\item<Space>
 autocmd FileType tex,rmd inoremap ;re \ref{}<Space><++><Esc>T{i
+autocmd Filetype tex inoremap <F5> <esc>:w<enter>:!pdflatex<space>"<C-r>%"<enter>a
+autocmd Filetype tex map <F5> :w<enter>:!pdflatex<space>"<C-r>%"<enter>
+autocmd Filetype tex map <C-l> :LLPStartPreview<enter>
 
 " Copy/paste
 
@@ -120,6 +127,9 @@ let g:easyescape_timeout = 50
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 let g:vim_markdown_math = 1
+
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+let g:livepreview_previewer = 'zathura'
 
 Plug 'scrooloose/syntastic'
 let g:syntastic_always_populate_loc_list = 1

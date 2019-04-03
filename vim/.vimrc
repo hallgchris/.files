@@ -127,6 +127,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_rust_checkers = ['cargo']
+let g:syntastic_python_checkers=['pylint']
 let g:syntastic_mode_map = {"mode": "active", "passive_filetypes": ["asm"] }
 function! SyntasticCheckHook(errors)
 	if !empty(a:errors)
@@ -160,17 +161,17 @@ let NERDTreeQuitOnOpen = 1
 "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 "Plug 'Xuyuanp/nerdtree-git-plugin'
 let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "",
-    \ "Staged"    : "",
-    \ "Untracked" : "",
-    \ "Renamed"   : "",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '',
-    \ "Unknown"   : "?"
-    \ }
+	\ "Modified"  : "",
+	\ "Staged"    : "",
+	\ "Untracked" : "",
+	\ "Renamed"   : "",
+	\ "Unmerged"  : "═",
+	\ "Deleted"   : "",
+	\ "Dirty"     : "✗",
+	\ "Clean"     : "✔︎",
+	\ 'Ignored'   : '',
+	\ "Unknown"   : "?"
+	\ }
 
 
 Plug 'tpope/vim-fugitive'
@@ -189,7 +190,11 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#wordcount#filetypes = '\vtext|markdown|rmd'
 Plug 'vim-airline/vim-airline-themes'
-let g:airline_theme='deus'
+"let g:airline_theme='deus'
+let g:airline_theme='gruvbox'
+
+Plug 'alfunx/gruvbox'
+
 
 if has('nvim')
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -233,29 +238,29 @@ if has('nvim')
 
 	let g:LanguageClient_diagnosticsDisplay = {
 		\ 1: {
-        \     "name": "Error",
-        \     "texthl": "ALEError",
-        \     "signText": "",
-        \     "signTexthl": "ALEErrorSign",
-        \ },
-        \ 2: {
-        \     "name": "Warning",
-        \     "texthl": "ALEWarning",
-        \     "signText": "",
-        \     "signTexthl": "ALEWarningSign",
-        \ },
-        \ 3: {
-        \     "name": "Information",
-        \     "texthl": "ALEInfo",
-        \     "signText": "",
-        \     "signTexthl": "ALEInfoSign",
-        \ },
-        \ 4: {
-        \     "name": "Hint",
-        \     "texthl": "ALEInfo",
-        \     "signText": "",
-        \     "signTexthl": "ALEInfoSign",
-        \ },
+		\     "name": "Error",
+		\     "texthl": "ALEError",
+		\     "signText": "",
+		\     "signTexthl": "ALEErrorSign",
+		\ },
+		\ 2: {
+		\     "name": "Warning",
+		\     "texthl": "ALEWarning",
+		\     "signText": "",
+		\     "signTexthl": "ALEWarningSign",
+		\ },
+		\ 3: {
+		\     "name": "Information",
+		\     "texthl": "ALEInfo",
+		\     "signText": "",
+		\     "signTexthl": "ALEInfoSign",
+		\ },
+		\ 4: {
+		\     "name": "Hint",
+		\     "texthl": "ALEInfo",
+		\     "signText": "",
+		\     "signTexthl": "ALEInfoSign",
+		\ },
 	\ }
 
 	nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
@@ -275,4 +280,32 @@ call plug#end()
 
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
+
+""" Gruvbox
+
+"" Theme and colors
+set termguicolors
+set background=dark
+let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+"set t_Co=256
+let g:gruvbox_bold=1
+let g:gruvbox_italic=1
+let g:gruvbox_underline=1
+let g:gruvbox_undercurl=1
+
+"" Use environment variable
+if !empty($VIM_COLOR)
+	silent! colorscheme $VIM_COLOR
+else
+	silent! colorscheme gruvbox
+endif
+
+"" Switch cursor according to mode
+if &term !=? 'linux' || has('gui_running')
+	let &t_SI="\<Esc>[6 q"
+	let &t_SR="\<Esc>[4 q"
+	let &t_EI="\<Esc>[2 q"
+endif
+set background=light
 

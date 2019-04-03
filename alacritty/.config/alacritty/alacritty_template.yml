@@ -187,7 +187,7 @@ colors:
     magenta: '%s'
     cyan:    '%s'
     white:   '%s'
-    
+
   # Bright colors
   bright:
     black:   '%s'
@@ -198,7 +198,7 @@ colors:
     magenta: '%s'
     cyan:    '%s'
     white:   '%s'
-    
+
   # Dim colors
   #
   # If the dim colors are not set, they will be calculated automatically based

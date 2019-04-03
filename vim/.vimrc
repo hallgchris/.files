@@ -7,6 +7,7 @@ syntax on
 
 set number
 set relativenumber
+set cursorline
 
 set mouse=a
 
@@ -185,7 +186,19 @@ let g:NERDTreeIndicatorMapCustom = {
 
 
 Plug 'tpope/vim-fugitive'
+
 Plug 'airblade/vim-gitgutter'
+let g:gitgutter_map_keys=0
+nmap <leader>hp <Plug>GitGutterPrevHunk
+nmap <leader>ha <Plug>GitGutterStageHunk
+nmap <leader>hu <Plug>GitGutterUndoHunk
+nmap ]c <Plug>GitGutterNextHunk
+nmap [c <Plug>GitGutterPrevHunk
+let g:gitgutter_sign_added='┃'
+let g:gitgutter_sign_modified='┃'
+let g:gitgutter_sign_removed='◢'
+let g:gitgutter_sign_removed_first_line='◥'
+let g:gitgutter_sign_modified_removed='◢'
 
 Plug 'bling/vim-airline'
 let g:airline_powerline_fonts = 1
@@ -317,5 +330,6 @@ if &term !=? 'linux' || has('gui_running')
 	let &t_SR="\<Esc>[4 q"
 	let &t_EI="\<Esc>[2 q"
 endif
-set background=light
+
+if &background == "dark" | highlight CursorLineNr gui=bold guifg=#fabd3f | else | highlight CursorLineNr gui=bold guifg=#b57614 | endif
 

@@ -115,3 +115,5 @@ alias cd4="cd ~/Documents/FIT1008"
 # https://superuser.com/questions/645599/why-is-a-percent-sign-appearing-before-each-prompt-on-zsh-in-windows
 unsetopt PROMPT_SP
 
+export theme="dark"
+

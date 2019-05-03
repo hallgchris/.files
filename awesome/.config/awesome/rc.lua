@@ -11,8 +11,12 @@
 
 -- Theme handling library
 local beautiful = require("beautiful")
-local theme = require("themes.blackout.theme")
---local theme = require("themes.whiteout.theme")
+local theme
+if os.getenv("theme") == "light" then
+	theme = require("themes.whiteout.theme")
+else
+	theme = require("themes.blackout.theme")
+end
 beautiful.init(theme)
 
 local gears = require("gears")

@@ -140,6 +140,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_rust_checkers = ['cargo']
 let g:syntastic_python_checkers=['pylint']
 let g:syntastic_mode_map = {"mode": "active", "passive_filetypes": ["asm"] }
+let g:syntastic_tex_lacheck_quiet_messages = { 'regex': '\VStyle file' }
 function! SyntasticCheckHook(errors)
 	if !empty(a:errors)
 		let g:syntastic_loc_list_height = min([len(a:errors), 10])
@@ -308,7 +309,7 @@ let g:calendar_google_task = 1
 
 "" Theme and colors
 set termguicolors
-set background=dark
+let &background=$theme
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 "set t_Co=256

@@ -1,5 +1,6 @@
 local naughty = require("naughty")
 local io = require("io")
+local gears = require("gears")
 
 local common = { }
 

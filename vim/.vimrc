@@ -40,6 +40,9 @@ no <C-j> <C-w>j
 no <C-k> <C-w>k
 no <C-l> <C-w>l
 
+set splitbelow
+set splitright
+
 inoremap ;; <Esc>/<++><Enter>"_c4l
 
 " C/C++
@@ -141,6 +144,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_rust_checkers = ['cargo']
 let g:syntastic_python_checkers=['pylint']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_mode_map = {"mode": "active", "passive_filetypes": ["asm"] }
 let g:syntastic_tex_lacheck_quiet_messages = { 'regex': '\VStyle file' }
 function! SyntasticCheckHook(errors)
@@ -149,7 +153,7 @@ function! SyntasticCheckHook(errors)
 	endif
 endfunction
 
-"Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim'
 
 Plug 'octol/vim-cpp-enhanced-highlight'
 let g:cpp_class_scope_highlight = 1
@@ -228,7 +232,8 @@ if has('nvim')
 	inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
 	inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 	autocmd CompleteDone * silent! pclose!
-	set completeopt+=noinsert
+	set completeopt+=noinsert " Auto-select the first suggestion
+	set completeopt-=preview  " But don't show that preview window, acts flashy and weird
 	let g:deoplete#enable_at_startup = 1
 
 	Plug 'zchee/deoplete-clang'
@@ -258,7 +263,7 @@ if has('nvim')
 	" Required for operations modifying multiple buffers like rename.
 	set hidden
 	let g:LanguageClient_serverCommands = {
-		\ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+		\ 'rust': ['rustup', 'run', 'stable', 'rls'],
 		\ 'javascript': ['javascript-typescript-stdio'],
 		\ }
 
@@ -292,7 +297,7 @@ if has('nvim')
 	nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 	nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 	nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-	nnoremap <silent> <F3> :call LanguageClient_textDocument_codeAction()<CR>
+	nnoremap <silent> <F3> :call LanguageClient_contextMenu()<CR>
 
 endif
 

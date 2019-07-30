@@ -106,10 +106,13 @@ alias ls='ls --color'
 
 alias gd="cd ~/Documents && grive && cd - >/dev/null"
 alias cdd="cd ~/Documents"
-alias cd1="cd ~/Documents/ENG1005"
-alias cd2="cd ~/Documents/ENG1060"
-alias cd3="cd ~/Documents/PHS1011"
-alias cd4="cd ~/Documents/FIT1008"
+alias cd1="cd ~/Documents/ENG1001"
+alias cd2="cd ~/Documents/ENG1003"
+alias cd3="cd ~/Documents/MTH2040"
+alias cd4="cd ~/Documents/PHS1022"
+
+alias cddas="cd ~/git/MHP_DAS"
+alias cddasweb="cd ~/git/MHP-DAS-Web-Server"
 
 # Stop those weird "%"s from showing
 # https://superuser.com/questions/645599/why-is-a-percent-sign-appearing-before-each-prompt-on-zsh-in-windows

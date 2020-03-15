@@ -4,3 +4,6 @@
 [submodule "awesome/.config/awesome/lain"]
 	path = awesome/.config/awesome/lain
 	url = https://github.com/lcpz/lain.git
+[submodule "zsh/.oh-my-zsh/custom/themes/powerlevel10k"]
+	path = zsh/.oh-my-zsh/custom/themes/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k.git

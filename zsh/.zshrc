@@ -2,15 +2,16 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH="/home/christopher/.oh-my-zsh"
+  export ZSH="/home/chris/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="gruvbox-dark"
+#ZSH_THEME="gruvbox-dark"
 #ZSH_THEME="agnoster"
-DEFAULT_USER="christopher"
+ZSH_THEME="../custom/themes/powerlevel10k/powerlevel10k"
+DEFAULT_USER="chris"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -97,7 +98,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export DATA_HDD="/run/media/christopher/Data"
+export DATA_HDD="/run/media/chris/Data"
 export PATH=$PATH:"$HOME/.scripts"
 
 alias vim='nvim'
